@@ -8,5 +8,5 @@ data "ibm_is_subnet" "subnet" {
 }
 
 data "ibm_is_vpc" "vpc" {
-    name = var.vpc_name
+  name = var.vpc_name
 }
