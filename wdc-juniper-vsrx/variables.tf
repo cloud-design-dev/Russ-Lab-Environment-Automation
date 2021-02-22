@@ -4,10 +4,10 @@ variable "datacenter" {
   default     = ""
 }
 
-variable "domainname" {
+variable "domain" {
   description = "Domain name for gateway appliances."
   type        = string
-  default     = ""
+  default     = "clouddesigndev.com"
 }
 
 variable "iaas_classic_username" {
@@ -25,5 +25,11 @@ variable "iaas_classic_api_key" {
 variable "ssh_key" {
   description = "SSH key to add to gateway appliances."
   type        = string
+  default     = ""
+}
+
+variable "name" {
+  type        = string
+  description = "Name that will be prepended to all resources."
   default     = ""
 }

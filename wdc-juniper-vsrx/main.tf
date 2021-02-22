@@ -3,7 +3,7 @@ data "ibm_compute_ssh_key" "ssh" {
 }
 
 resource "ibm_network_vlan" "ha_srx_public_vlan" {
-  name            = "${var.name}-srx-public-vlan"
+  name            = "${var.name}-public"
   datacenter      = var.datacenter
   type            = "PUBLIC"
   router_hostname = "fcr01a.${var.datacenter}"
@@ -11,7 +11,7 @@ resource "ibm_network_vlan" "ha_srx_public_vlan" {
 }
 
 resource "ibm_network_vlan" "ha_srx_private_vlan" {
-  name            = "${var.name}-srx-private-vlan"
+  name            = "${var.name}-private"
   datacenter      = var.datacenter
   type            = "PRIVATE"
   router_hostname = "bcr01a.${var.datacenter}"
@@ -23,7 +23,7 @@ resource "ibm_network_gateway" "ha_vsrx" {
 
   members {
     hostname             = "ha1-srx-${var.datacenter}"
-    domain               = var.domainname
+    domain               = var.domain
     datacenter           = var.datacenter
     network_speed        = 10000
     private_network_only = false
@@ -44,7 +44,7 @@ resource "ibm_network_gateway" "ha_vsrx" {
   }
   members {
     hostname             = "ha2-srx-${var.datacenter}"
-    domain               = var.domainname
+    domain               = var.domain
     datacenter           = var.datacenter
     network_speed        = 10000
     private_network_only = false
